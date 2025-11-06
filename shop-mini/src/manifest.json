@@ -1,0 +1,21 @@
+{
+  "name": "My Shop Mini",
+  "permissions": [
+    "CAMERA",
+    "MICROPHONE",
+    "MOTION"
+  ],
+  "scopes": [
+    "openid",
+    "shops:recent:read",
+    "user_settings:read",
+    "product_list:write"
+  ],
+  "privacy_policy_url": "https://example.com/privacy",
+  "terms_url": "https://example.com/terms",
+  "handle": "my-shop-mini",
+  "trusted_domains": [
+    "placehold.co",
+    "commondatastorage.googleapis.com"
+  ]
+}
