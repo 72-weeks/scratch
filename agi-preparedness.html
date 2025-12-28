@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI Preparedness: A Personal Operating Plan (2026)</title>
+    <meta name="description" content="A short, shareable field manual for capturing upside and limiting downside—without panic.">
+    <style>
+        /* ========================================
+           CSS Custom Properties
+           ======================================== */
+        :root {
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+
+            --color-text: #1a1a1a;
+            --color-text-muted: #555;
+            --color-text-light: #777;
+            --color-bg: #fafafa;
+            --color-bg-alt: #f0f0f0;
+            --color-border: #ddd;
+            --color-border-light: #e8e8e8;
+            --color-accent: #2a2a2a;
+            --color-accent-light: #444;
+            --color-highlight: #fff3cd;
+            --color-callout-bg: #f8f8f8;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+
+            --max-width: 42rem;
+            --line-height: 1.7;
+        }
+
+        /* ========================================
+           Reset & Base
+           ======================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-serif);
+            font-size: 1.0625rem;
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           Layout
+           ======================================== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-sm);
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+        }
+
+        /* ========================================
+           Typography
+           ======================================== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h2 {
+            font-size: 1.375rem;
+            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        @media (min-width: 640px) {
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+        }
+
+        p {
+            margin: 0 0 var(--spacing-sm) 0;
+        }
+
+        .lead {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (min-width: 640px) {
+            .lead { font-size: 1.25rem; }
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        small, .small {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+
+        /* ========================================
+           Links
+           ======================================== */
+        a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--color-accent-light);
+        }
+
+        a:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* ========================================
+           Lists
+           ======================================== */
+        ul, ol {
+            margin: 0 0 var(--spacing-md) 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        li::marker {
+            color: var(--color-text-light);
+        }
+
+        /* ========================================
+           Hero Section
+           ======================================== */
+        .hero {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .hero-title {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-premise {
+            font-size: 1.0625rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-sm);
+            border-left: 3px solid var(--color-border);
+        }
+
+        @media (min-width: 640px) {
+            .hero-premise {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* ========================================
+           Navigation Links
+           ======================================== */
+        .nav-choices {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-md) 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        @media (min-width: 480px) {
+            .nav-choices {
+                flex-direction: row;
+                gap: var(--spacing-md);
+            }
+        }
+
+        .nav-choices a {
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.15s ease;
+        }
+
+        .nav-choices a:hover {
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        .how-to-read {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            color: var(--color-text-light);
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+            margin-top: var(--spacing-md);
+        }
+
+        .how-to-read strong {
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           Sections with :target highlighting
+           ======================================== */
+        section {
+            scroll-margin-top: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+        }
+
+        section:target {
+            animation: highlight-fade 2s ease;
+        }
+
+        @keyframes highlight-fade {
+            0% { background-color: var(--color-highlight); }
+            100% { background-color: transparent; }
+        }
+
+        /* ========================================
+           Accordion (details/summary)
+           ======================================== */
+        details {
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--color-border-light);
+            border-radius: 4px;
+            background-color: var(--color-callout-bg);
+        }
+
+        summary {
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: var(--spacing-sm);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 400;
+            width: 1.25rem;
+            flex-shrink: 0;
+            color: var(--color-text-light);
+        }
+
+        details[open] summary::before {
+            content: '−';
+        }
+
+        summary:hover {
+            color: var(--color-accent);
+        }
+
+        summary:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: -2px;
+        }
+
+        .accordion-content {
+            padding: 0 var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+            font-size: 0.9375rem;
+        }
+
+        .accordion-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           Scenario Cards
+           ======================================== */
+        .scenario {
+            margin-bottom: var(--spacing-sm);
+            padding-left: var(--spacing-sm);
+            border-left: 2px solid var(--color-border);
+        }
+
+        .scenario-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .scenario p {
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        /* ========================================
+           Checklists
+           ======================================== */
+        .checklist {
+            background-color: var(--color-callout-bg);
+            border: 1px solid var(--color-border-light);
+            border-radius: 4px;
+            padding: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .checklist-title {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .checklist-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .checklist-items li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9375rem;
+        }
+
+        .checklist-items li:last-child {
+            margin-bottom: 0;
+        }
+
+        .checklist-items input[type="checkbox"] {
+            width: 1.125rem;
+            height: 1.125rem;
+            margin: 0.2rem 0 0 0;
+            flex-shrink: 0;
+            accent-color: var(--color-accent);
+            cursor: pointer;
+        }
+
+        .checklist-items label {
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .checklist-items input[type="checkbox"]:checked + label {
+            color: var(--color-text-light);
+            text-decoration: line-through;
+        }
+
+        /* ========================================
+           Callouts
+           ======================================== */
+        .callout {
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background-color: var(--color-callout-bg);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout-title {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .callout p {
+            font-size: 0.9375rem;
+            margin-bottom: 0;
+        }
+
+        .callout.disagree {
+            border-left-color: #888;
+            background-color: #f5f5f5;
+        }
+
+        .callout.disagree .callout-title::before {
+            content: '↳ ';
+            opacity: 0.5;
+        }
+
+        /* ========================================
+           Section Navigation
+           ======================================== */
+        .section-nav {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-border-light);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+        }
+
+        .section-nav a {
+            color: var(--color-text-light);
+            text-decoration: none;
+        }
+
+        .section-nav a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .section-nav span {
+            color: var(--color-border);
+        }
+
+        /* ========================================
+           Priority/Rules Lists
+           ======================================== */
+        .priority-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-md) 0;
+            counter-reset: priority;
+        }
+
+        .priority-list li {
+            counter-increment: priority;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background-color: var(--color-callout-bg);
+            border-radius: 4px;
+        }
+
+        .priority-list li::before {
+            content: counter(priority);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           Rules Section
+           ======================================== */
+        .rules-group {
+            margin: var(--spacing-md) 0;
+        }
+
+        .rules-group h4 {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .rules-group ul {
+            margin: 0;
+        }
+
+        /* ========================================
+           Action Items
+           ======================================== */
+        .action-item {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md);
+            background-color: white;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        .action-number {
+            font-family: var(--font-sans);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .action-title {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .action-item p {
+            font-size: 0.9375rem;
+            margin-bottom: 0;
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           CTA Section
+           ======================================== */
+        .cta {
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .cta h3 {
+            font-family: var(--font-sans);
+            color: white;
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta p {
+            font-size: 0.9375rem;
+            opacity: 0.9;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-options {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-md) 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            text-align: left;
+        }
+
+        @media (min-width: 480px) {
+            .cta-options {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-sm);
+            }
+        }
+
+        .cta-options li {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-bottom: 0;
+        }
+
+        .cta-options li strong {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+        }
+
+        /* ========================================
+           Footer
+           ======================================== */
+        footer {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+
+        footer p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .version {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: var(--spacing-md);
+        }
+
+        /* ========================================
+           Utility Classes
+           ======================================== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .not-claiming {
+            margin: var(--spacing-md) 0;
+            padding-left: var(--spacing-sm);
+            border-left: 2px solid var(--color-border-light);
+        }
+
+        .not-claiming li {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           Print Styles
+           ======================================== */
+        @media print {
+            :root {
+                --color-bg: white;
+                --color-bg-alt: #f8f8f8;
+            }
+
+            html {
+                font-size: 11pt;
+            }
+
+            body {
+                background: white;
+                color: black;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+
+            h2 {
+                margin-top: 2rem;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            details {
+                border: 1px solid #ccc;
+            }
+
+            details[open] {
+                page-break-inside: avoid;
+            }
+
+            summary::before {
+                content: '▸';
+            }
+
+            details[open] summary::before {
+                content: '▾';
+            }
+
+            .nav-choices,
+            .section-nav,
+            .how-to-read {
+                display: none;
+            }
+
+            .cta {
+                background-color: #333;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            a[href^="http"]::after {
+                content: " (" attr(href) ")";
+                font-size: 0.75em;
+                word-break: break-all;
+            }
+
+            .checklist-items input[type="checkbox"] {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 0.9em;
+                height: 0.9em;
+                border: 1.5px solid #333;
+                border-radius: 2px;
+                margin-right: 0.25em;
+            }
+        }
+
+        @page {
+            margin: 1in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ================================
+             HERO SECTION
+             ================================ -->
+        <header class="hero" id="top">
+            <p class="hero-subtitle">Field Manual</p>
+            <h1 class="hero-title">AGI Preparedness: A Personal Operating Plan (2026)</h1>
+            <p class="lead">A short, shareable field manual for capturing upside and limiting downside—without panic.</p>
+
+            <div class="hero-premise">
+                <p>I'm not trying to predict dates or win arguments. I'm trying to be <strong>positioned</strong>: financially, professionally, and personally—so that if AGI-level capability keeps accelerating, I'm not forced into bad decisions, and I can take advantage of opportunities with a clear head.</p>
+            </div>
+
+            <nav aria-label="Main navigation">
+                <p><strong>Choose your path:</strong></p>
+                <ul class="nav-choices">
+                    <li><a href="#thesis">Read My thesis</a></li>
+                    <li><a href="#plan">Skim My plan</a></li>
+                    <li><a href="#hedges">Jump to My hedges</a></li>
+                </ul>
+            </nav>
+
+            <aside class="how-to-read">
+                <strong>How to read this:</strong> This is written in the spirit of "strong opinions, loosely held." If you think I'm wrong, I want that.
+            </aside>
+        </header>
+
+        <!-- ================================
+             SECTION 1: THE THESIS
+             ================================ -->
+        <section id="thesis">
+            <h2>Section 1 — My Thesis</h2>
+
+            <h3>What I mean by "AGI is here"</h3>
+            <p>When I say "AGI," I'm not making a philosophical claim about consciousness. I mean something more practical:</p>
+
+            <div class="callout">
+                <p><strong>The cost and availability of general-purpose cognitive work is collapsing fast enough to change how companies, markets, and institutions behave.</strong></p>
+            </div>
+
+            <p>That doesn't require magic. It requires capability that is:</p>
+            <ul>
+                <li>Good enough</li>
+                <li>Cheap enough</li>
+                <li>Reliable enough</li>
+                <li>Integrated enough</li>
+            </ul>
+            <p>…to become default infrastructure.</p>
+
+            <h3>The core claim</h3>
+            <p>If intelligence becomes abundant, returns concentrate around:</p>
+            <ol class="priority-list">
+                <li>Compute and infrastructure (the "picks and shovels")</li>
+                <li>Energy and physical constraints (power, cooling, networks)</li>
+                <li>Distribution and integration (who ships it into real workflows)</li>
+                <li>Coordination (policy, labor, trust, institutions lag capability)</li>
+            </ol>
+            <p>This is why I'm less interested in "cool AI apps" and more interested in the stack beneath them.</p>
+
+            <h3>What I'm not claiming</h3>
+            <ul class="not-claiming">
+                <li>I'm not claiming a specific AGI timeline.</li>
+                <li>I'm not claiming markets will go up forever.</li>
+                <li>I'm not claiming society collapses.</li>
+                <li>I'm not claiming any particular company "wins."</li>
+                <li>I'm not claiming I can outsmart everyone.</li>
+            </ul>
+            <p><em>I'm claiming the asymmetry is large enough that preparedness is rational.</em></p>
+
+            <details>
+                <summary>Scenarios I keep in mind</summary>
+                <div class="accordion-content">
+                    <div class="scenario">
+                        <span class="scenario-label">Base case</span>
+                        <p>Rapid diffusion + messy integration. Big winners, big disruption, lots of lag.</p>
+                    </div>
+                    <div class="scenario">
+                        <span class="scenario-label">Fast case</span>
+                        <p>Capability jumps faster than institutions adapt; drawdowns + policy shocks likely.</p>
+                    </div>
+                    <div class="scenario">
+                        <span class="scenario-label">Messy case</span>
+                        <p>Plateaus and leaps; hype cycles; uneven adoption by sector and country.</p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="callout disagree">
+                <p class="callout-title">You can disagree with me here</p>
+                <p>You might think the timeline is much longer, that current AI is overrated, or that the "returns to intelligence" framing is wrong. I'd love to hear that case—especially if you've thought hard about it.</p>
+            </div>
+
+            <nav class="section-nav" aria-label="Section navigation">
+                <a href="#top">Back to top</a>
+                <span>/</span>
+                <a href="#plan">Next: My Plan</a>
+                <span>/</span>
+                <a href="#hedges">Jump: My Hedges</a>
+            </nav>
+        </section>
+
+        <!-- ================================
+             SECTION 2: THE PLAN
+             ================================ -->
+        <section id="plan">
+            <h2>Section 2 — My Plan (2026 Operating Plan)</h2>
+
+            <h3>My number-one goal</h3>
+            <p><strong>Be prepared to take maximum advantage of AGI-level capability and limit downside</strong>—given my resources, network, and insight.</p>
+
+            <h4>Prepared, to me, means:</h4>
+            <ul>
+                <li>I'm not cash-starved</li>
+                <li>I'm not over-levered</li>
+                <li>I'm not trapped by a single point of failure</li>
+                <li>I'm building and learning in the real world</li>
+                <li>I'm legible to the right people</li>
+            </ul>
+
+            <h3>The three priorities</h3>
+            <ol class="priority-list">
+                <li><strong>Liquidity + optionality</strong></li>
+                <li><strong>A rules-based AGI exposure</strong> (upside capture without constant tinkering)</li>
+                <li><strong>Public positioning through high-signal work</strong> (not hype)</li>
+            </ol>
+
+            <h3>My rules (simple, durable)</h3>
+
+            <div class="rules-group">
+                <h4>Capital rules</h4>
+                <ul>
+                    <li>Hold a minimum runway that makes me calm.</li>
+                    <li>Pre-commit to allocation rules before volatility.</li>
+                    <li>Avoid leverage that can force sales in a drawdown.</li>
+                </ul>
+            </div>
+
+            <div class="rules-group">
+                <h4>Attention rules</h4>
+                <ul>
+                    <li>Few projects, high learning.</li>
+                    <li>Build things that touch real users.</li>
+                    <li>Ignore most discourse; track real deployment signals.</li>
+                </ul>
+            </div>
+
+            <div class="rules-group">
+                <h4>Health rules</h4>
+                <ul>
+                    <li>Fitness and sleep are infrastructure.</li>
+                    <li>I don't get to "think my way" out of stress forever.</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <p class="checklist-title">Checklist: "Am I prepared?"</p>
+                <ul class="checklist-items">
+                    <li>
+                        <input type="checkbox" id="check1">
+                        <label for="check1">I can cover 12–18 months of expenses without selling risk assets.</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check2">
+                        <label for="check2">I have a clear plan for unknown tax liabilities.</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check3">
+                        <label for="check3">I can handle a major market drawdown without changing strategy.</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check4">
+                        <label for="check4">I can explain my thesis in two minutes without sounding like a doomer.</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="check5">
+                        <label for="check5">I'm shipping at least one real-world project that teaches me something.</label>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Triggers that would change my plan</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Clear evidence of long-term capability plateau (not a normal hype cycle)</li>
+                        <li>Major regulatory constraint that meaningfully limits deployment</li>
+                        <li>A personal/family constraint that increases fragility</li>
+                        <li>A better framework that explains the world with fewer assumptions</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="callout disagree">
+                <p class="callout-title">You can disagree with me here</p>
+                <p>Maybe you think rules-based investing is naive, or that "liquidity" is just disguised fear. Push back on the strategy itself—I'm listening.</p>
+            </div>
+
+            <nav class="section-nav" aria-label="Section navigation">
+                <a href="#top">Back to top</a>
+                <span>/</span>
+                <a href="#hedges">Next: My Hedges</a>
+                <span>/</span>
+                <a href="#now">Jump: What I'm Doing Now</a>
+            </nav>
+        </section>
+
+        <!-- ================================
+             SECTION 3: THE HEDGES
+             ================================ -->
+        <section id="hedges">
+            <h2>Section 3 — My Hedges</h2>
+
+            <h3>What I'm hedging against</h3>
+            <p>Not "robots take over." The realistic risk is:</p>
+
+            <div class="callout">
+                <p><strong>Capability accelerates faster than coordination.</strong></p>
+            </div>
+
+            <p>That creates turbulence:</p>
+            <ul>
+                <li>Market drawdowns</li>
+                <li>Policy shocks</li>
+                <li>Labor repricing</li>
+                <li>Institutional lag and missteps</li>
+            </ul>
+
+            <h3>What still has value when narratives break</h3>
+            <p>I think hedges should be <em>categories</em>, not bets:</p>
+            <ol class="priority-list">
+                <li>Sovereign-agnostic stores of value</li>
+                <li>Energy and energy control</li>
+                <li>Real assets tied to non-discretionary needs (food, water, shelter, healthcare delivery)</li>
+                <li>Jurisdictional optionality (ability to adapt across policy regimes)</li>
+                <li>Dry powder (optionality to act in dislocations)</li>
+            </ol>
+            <p><em>The point isn't to "opt out." It's to be unforced.</em></p>
+
+            <details>
+                <summary>Failure modes (so I don't fool myself)</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Gold can be dead money for long stretches.</li>
+                        <li>Bitcoin depends on social and regulatory tolerance.</li>
+                        <li>Real assets can be illiquid and politicized.</li>
+                        <li>Energy plays can be policy-dependent.</li>
+                        <li>Cash can decay in real terms.</li>
+                    </ul>
+                    <p><em>I'm okay with those tradeoffs if they buy optionality under stress.</em></p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Counterarguments I respect</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>"Hedges are a tax on returns."</strong> Fair. If the bull case plays out cleanly, I'll underperform the maximally-long crowd.</li>
+                        <li><strong>"You can't hedge tail risk; just accept it."</strong> Maybe. But I'd rather have options than not.</li>
+                        <li><strong>"Jurisdictional optionality is a fantasy for most people."</strong> Partly true—but even partial optionality beats none.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <nav class="section-nav" aria-label="Section navigation">
+                <a href="#top">Back to top</a>
+                <span>/</span>
+                <a href="#now">Next: What I'm Doing Now</a>
+            </nav>
+        </section>
+
+        <!-- ================================
+             SECTION 4: WHAT I'M DOING NOW
+             ================================ -->
+        <section id="now">
+            <h2>Section 4 — What I'm Doing Right Now</h2>
+
+            <p>I'm focusing on three concrete actions:</p>
+
+            <div class="action-item">
+                <p class="action-number">Action 1</p>
+                <p class="action-title">Prep our rental house for a spring sale</p>
+                <p>The goal is simple: convert an illiquid, attention-consuming asset into a liquidity buffer that increases freedom and reduces stress.</p>
+            </div>
+
+            <div class="action-item">
+                <p class="action-number">Action 2</p>
+                <p class="action-title">Move a first tranche into a rules-based "AGI basket"</p>
+                <p>Not because I want to trade. Because I want to commit to an exposure without making it a daily mental hobby.</p>
+            </div>
+
+            <div class="action-item">
+                <p class="action-number">Action 3</p>
+                <p class="action-title">Write this and share it privately</p>
+                <p>I want critique, not applause. I'm sharing this because I think the right conversations matter more than the right predictions.</p>
+            </div>
+
+            <div class="cta">
+                <h3>How you can help</h3>
+                <p>Reply with one of:</p>
+                <ul class="cta-options">
+                    <li>
+                        <strong>A</strong>
+                        What am I missing?
+                    </li>
+                    <li>
+                        <strong>B</strong>
+                        What are you building that's real (not a demo)?
+                    </li>
+                    <li>
+                        <strong>C</strong>
+                        What's your counter-thesis?
+                    </li>
+                </ul>
+                <p style="margin-top: var(--spacing-md); margin-bottom: 0;"><em>If I'm wrong, I'd rather know early.</em></p>
+            </div>
+
+            <nav class="section-nav" aria-label="Section navigation">
+                <a href="#top">Back to top</a>
+                <span>/</span>
+                <a href="#thesis">Thesis</a>
+                <span>/</span>
+                <a href="#plan">Plan</a>
+                <span>/</span>
+                <a href="#hedges">Hedges</a>
+            </nav>
+        </section>
+
+        <!-- ================================
+             FOOTER
+             ================================ -->
+        <footer>
+            <p>If this ages poorly, good—I'll update it. If it ages well, I want it to be because the plan was robust, not because I got lucky.</p>
+            <p>This is a living document. The goal isn't to be right; it's to be less wrong over time.</p>
+            <p class="version">Version 1.0 — December 2025 / January 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
