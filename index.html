@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World - Mobile Dev POC</title>
+    <title>Deerfield Beach - Paradise in South Florida</title>
     <style>
         * {
             margin: 0;
@@ -12,58 +12,344 @@
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8fafc;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background-color: #f7fafc;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .dedication {
+            background-color: #edf2f7;
             padding: 1.5rem;
+            text-align: center;
+            font-style: italic;
+            color: #4a5568;
+            border-bottom: 3px solid #667eea;
         }
 
         .container {
-            max-width: 48rem;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #0f172a;
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #edf2f7;
+        }
+
+        .section h3 {
+            color: #4a5568;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        p {
+        .section p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .card h4 {
+            color: #667eea;
             font-size: 1.25rem;
-            color: #475569;
-            margin-bottom: 2rem;
+            margin-bottom: 0.75rem;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: #0f172a;
-            color: #ffffff;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border-radius: 0.25rem;
+        .card p {
+            font-size: 1rem;
+            color: #4a5568;
         }
 
-        @media (max-width: 640px) {
-            h1 {
+        .highlight {
+            background-color: #fef5e7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 1.5rem 0;
+        }
+
+        .highlight strong {
+            color: #d97706;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+            color: #4a5568;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1rem;
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
                 font-size: 2rem;
             }
-            p {
+
+            .hero p {
                 font-size: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello World</h1>
-        <p>Mobile development POC - Built and deployed from a phone</p>
-        <div class="badge">Powered by GitHub Pages</div>
+    <div class="hero">
+        <h1>🌴 Deerfield Beach 🌊</h1>
+        <p>Discover the hidden gem of South Florida's coastline</p>
     </div>
+
+    <div class="dedication">
+        <p>This website is dedicated to Paul - Enjoy exploring this beautiful beach paradise!</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Welcome to Deerfield Beach</h2>
+            <p>
+                Deerfield Beach is a charming coastal city located in Broward County, Florida, nestled between
+                Boca Raton and Pompano Beach. With its pristine beaches, crystal-clear waters, and laid-back
+                atmosphere, it's the perfect destination for both relaxation and adventure.
+            </p>
+            <p>
+                Known for its Blue Wave certified beach, world-class fishing pier, and vibrant community,
+                Deerfield Beach offers a quintessential South Florida experience without the overwhelming crowds
+                of larger neighboring cities.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🏖️ The Beach</h2>
+            <p>
+                Deerfield Beach's coastline stretches for miles along the Atlantic Ocean, offering soft golden
+                sand and warm, inviting waters. The beach is meticulously maintained and has earned the prestigious
+                Blue Wave certification for its cleanliness and environmental stewardship.
+            </p>
+
+            <div class="highlight">
+                <strong>Did you know?</strong> Deerfield Beach is one of the few beaches in Florida to receive
+                the Blue Wave Beach certification, recognizing it as one of the cleanest and most environmentally
+                friendly beaches in the country!
+            </div>
+
+            <h3>Beach Features:</h3>
+            <ul>
+                <li>🌊 Gentle waves perfect for swimming</li>
+                <li>🏄 Excellent conditions for paddleboarding and kayaking</li>
+                <li>🐚 Beautiful shells and marine life to discover</li>
+                <li>🌅 Breathtaking sunrise views over the Atlantic</li>
+                <li>♿ ADA-accessible beach wheelchairs available</li>
+                <li>🏖️ Well-maintained facilities and lifeguard stations</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎣 The International Fishing Pier</h2>
+            <p>
+                The Deerfield Beach International Fishing Pier is an iconic 720-foot structure extending into
+                the Atlantic Ocean. It's one of the longest piers in South Florida and a beloved landmark for
+                both locals and visitors.
+            </p>
+            <p>
+                Whether you're an experienced angler or just want to enjoy a scenic walk over the ocean, the
+                pier offers stunning panoramic views and excellent fishing opportunities year-round.
+            </p>
+            <ul>
+                <li>Open 24 hours a day, 7 days a week</li>
+                <li>Bait and tackle shop on-site</li>
+                <li>No fishing license required on the pier</li>
+                <li>Common catches include snapper, mackerel, pompano, and more</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Top Attractions & Activities</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>🌴 Quiet Waters Park</h4>
+                    <p>
+                        A 430-acre park featuring splash park, cable water skiing, camping areas,
+                        art galleries, and beautiful nature trails.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>🛒 Deerfield Beach Farmers Market</h4>
+                    <p>
+                        Every Saturday morning, enjoy fresh local produce, artisan goods, live music,
+                        and community atmosphere.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>🚴 Deerfield Beach Arboretum</h4>
+                    <p>
+                        A hidden urban oasis featuring native Florida plants, walking trails, and
+                        educational programs about local ecosystems.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>🤿 Snorkeling & Diving</h4>
+                    <p>
+                        Explore nearby coral reefs and shipwrecks, home to colorful tropical fish
+                        and marine life.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>🍽️ Dining on the Beach</h4>
+                    <p>
+                        Enjoy fresh seafood and ocean views at beachfront restaurants and casual
+                        waterfront cafes.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>🎨 Arts & Culture</h4>
+                    <p>
+                        Visit local galleries, attend festivals, and experience the vibrant arts scene
+                        throughout the year.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌞 When to Visit</h2>
+            <p>
+                Deerfield Beach enjoys warm, sunny weather year-round, making it a perfect destination
+                any time of the year!
+            </p>
+
+            <h3>Best Times to Visit:</h3>
+            <ul>
+                <li><strong>Winter (December - March):</strong> Peak season with perfect weather, temperatures
+                    in the 70s-80s°F, and lower humidity. Great for escaping cold northern winters!</li>
+                <li><strong>Spring (April - May):</strong> Beautiful weather, fewer crowds, and great hotel
+                    deals. Perfect balance of comfort and value.</li>
+                <li><strong>Summer (June - September):</strong> Hot and humid, but great for beach lovers.
+                    Afternoon thunderstorms are common but brief.</li>
+                <li><strong>Fall (October - November):</strong> Pleasant temperatures return, crowds thin out,
+                    and it's a lovely time for outdoor activities.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📍 Getting There & Around</h2>
+            <p>
+                Deerfield Beach is conveniently located in South Florida, making it easily accessible from
+                major cities and airports.
+            </p>
+            <ul>
+                <li><strong>By Air:</strong> Fort Lauderdale-Hollywood International Airport (FLL) is just
+                    15 minutes away</li>
+                <li><strong>By Car:</strong> Easy access via I-95 and Florida's Turnpike</li>
+                <li><strong>By Train:</strong> Tri-Rail and Brightline serve nearby stations</li>
+                <li><strong>Local Transport:</strong> Broward County Transit buses, ride-sharing services,
+                    bike rentals</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>💡 Insider Tips</h2>
+            <div class="highlight">
+                <ul style="list-style: none; padding: 0;">
+                    <li>🌅 <strong>Early Bird Special:</strong> Visit the beach at sunrise for the most peaceful
+                        experience and stunning photo opportunities</li>
+                    <li>🅿️ <strong>Parking Pro Tip:</strong> Arrive early or use the metered spots along A1A
+                        for easier beach access</li>
+                    <li>🍹 <strong>Local Favorite:</strong> Check out JB's on the Beach for casual waterfront
+                        dining with live music</li>
+                    <li>🐢 <strong>Sea Turtle Season:</strong> March-October is nesting season - watch for
+                        protected nests and join a nighttime turtle walk</li>
+                    <li>🎪 <strong>Events:</strong> Don't miss the annual festivals including the Craft Beer &
+                        Seafood Festival and various beach concerts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🌴 Deerfield Beach - Where paradise meets the Atlantic 🌊</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            Made with ❤️ for Paul | Explore, Relax, Enjoy!
+        </p>
+    </footer>
 </body>
 </html>
