@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Deerfield Beach - Surf's Up! 🏄</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Raleway:wght@300;400;600;700&display=swap');
@@ -13,10 +13,16 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            -webkit-overflow-scrolling: touch;
+        }
+
         body {
             font-family: 'Raleway', sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
             background: linear-gradient(135deg,
                 #00c6ff 0%,
                 #0072ff 25%,
@@ -26,6 +32,7 @@
             background-size: 400% 400%;
             animation: beachGradient 20s ease infinite;
             position: relative;
+            touch-action: pan-y;
         }
 
         @keyframes beachGradient {
@@ -55,23 +62,32 @@
             50% { opacity: 0.8; transform: translateY(-20px); }
         }
 
+        .app-container {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for mobile */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
         .header {
             text-align: center;
-            padding: 2rem 1rem 1rem;
-            position: relative;
-            z-index: 10;
+            padding: 1.5rem 1rem 0.5rem;
+            flex-shrink: 0;
         }
 
         .logo {
             font-family: 'Permanent Marker', cursive;
-            font-size: 3rem;
+            font-size: 2.2rem;
             color: white;
             text-shadow:
                 3px 3px 0px rgba(255, 107, 157, 0.8),
                 6px 6px 0px rgba(255, 160, 71, 0.6),
                 9px 9px 0px rgba(0, 198, 255, 0.4);
             animation: floatText 3s ease-in-out infinite;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         @keyframes floatText {
@@ -80,7 +96,7 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.95);
             font-weight: 300;
             letter-spacing: 2px;
@@ -92,25 +108,27 @@
             padding: 0.5rem 1rem;
             font-style: italic;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .carousel-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 60vh;
-            padding: 2rem 1rem;
+            flex: 1;
+            padding: 1rem;
             position: relative;
-            z-index: 5;
+            overflow: hidden;
         }
 
         .card-wrapper {
             position: relative;
             width: 100%;
             max-width: 600px;
-            height: 500px;
+            height: 100%;
+            max-height: 500px;
             perspective: 1000px;
         }
 
@@ -127,7 +145,7 @@
                 0 8px 32px 0 rgba(31, 38, 135, 0.37),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.2),
                 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -137,6 +155,8 @@
             opacity: 0;
             transform: translateX(100%) rotateY(20deg) scale(0.8);
             pointer-events: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .card.active {
@@ -212,10 +232,11 @@
         }
 
         .card-icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             animation: bounce 2s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            flex-shrink: 0;
         }
 
         @keyframes bounce {
@@ -225,28 +246,31 @@
 
         .card-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-shadow:
                 2px 2px 0px rgba(255, 107, 157, 0.6),
                 4px 4px 0px rgba(0, 198, 255, 0.4);
+            flex-shrink: 0;
         }
 
         .card-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.95);
-            line-height: 1.8;
+            line-height: 1.6;
             font-weight: 400;
             max-width: 500px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
 
         .card-details {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 2px solid rgba(255, 255, 255, 0.3);
             width: 100%;
+            flex-shrink: 0;
         }
 
         .card-details ul {
@@ -258,8 +282,8 @@
 
         .card-details li {
             color: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem 0;
-            font-size: 1rem;
+            padding: 0.35rem 0;
+            font-size: 0.95rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
@@ -271,19 +295,20 @@
         .controls {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            padding: 0.75rem 0;
+            flex-shrink: 0;
         }
 
         .nav-btn {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.4);
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -305,13 +330,14 @@
         .indicators {
             display: flex;
             justify-content: center;
-            gap: 0.8rem;
-            margin-top: 2rem;
+            gap: 0.6rem;
+            padding: 0.5rem 0;
+            flex-shrink: 0;
         }
 
         .indicator {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             border: 2px solid rgba(255, 255, 255, 0.5);
@@ -327,11 +353,12 @@
 
         .swipe-hint {
             text-align: center;
-            margin-top: 1rem;
+            padding: 0.5rem 0;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-style: italic;
             animation: pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes pulse {
@@ -341,65 +368,73 @@
 
         footer {
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 0.75rem 1rem;
             color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
             .logo {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .tagline {
+                font-size: 0.8rem;
             }
 
             .card-title {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
 
             .card-description {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .card {
-                padding: 2rem 1.5rem;
-                height: 550px;
+                padding: 1.5rem 1.25rem;
             }
 
             .card-icon {
-                font-size: 4rem;
+                font-size: 3rem;
+            }
+
+            .card-details li {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">Deerfield Beach</div>
-        <div class="tagline">SURF'S UP! GOOD VIBES ONLY</div>
-    </div>
-
-    <div class="dedication">
-        For Paul - Catch the wave! 🏄
-    </div>
-
-    <div class="carousel-container">
-        <div class="card-wrapper" id="cardWrapper">
-            <!-- Cards will be dynamically created -->
+    <div class="app-container">
+        <div class="header">
+            <div class="logo">Deerfield Beach</div>
+            <div class="tagline">SURF'S UP! GOOD VIBES ONLY</div>
         </div>
+
+        <div class="dedication">
+            For Paul - Catch the wave! 🏄
+        </div>
+
+        <div class="carousel-container">
+            <div class="card-wrapper" id="cardWrapper">
+                <!-- Cards will be dynamically created -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" aria-label="Previous">◀</button>
+            <button class="nav-btn" id="nextBtn" aria-label="Next">▶</button>
+        </div>
+
+        <div class="indicators" id="indicators"></div>
+
+        <div class="swipe-hint">← Swipe or use arrow keys →</div>
+
+        <footer>
+            Made with ❤️ for Paul | Keep Surfin' | Deerfield Beach Forever 🌴🌊
+        </footer>
     </div>
-
-    <div class="controls">
-        <button class="nav-btn" id="prevBtn" aria-label="Previous">◀</button>
-        <button class="nav-btn" id="nextBtn" aria-label="Next">▶</button>
-    </div>
-
-    <div class="indicators" id="indicators"></div>
-
-    <div class="swipe-hint">← Swipe or use arrow keys →</div>
-
-    <footer>
-        Made with ❤️ for Paul | Keep Surfin' | Deerfield Beach Forever 🌴🌊
-    </footer>
 
     <script>
         const cards = [
