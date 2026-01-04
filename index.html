@@ -62,63 +62,13 @@
             50% { opacity: 0.8; transform: translateY(-20px); }
         }
 
-        .app-container {
+        .carousel-container {
             width: 100%;
             height: 100vh;
-            height: 100dvh; /* Dynamic viewport height for mobile */
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-        }
-
-        .header {
-            text-align: center;
-            padding: 1.5rem 1rem 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .logo {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 2.2rem;
-            color: white;
-            text-shadow:
-                3px 3px 0px rgba(255, 107, 157, 0.8),
-                6px 6px 0px rgba(255, 160, 71, 0.6),
-                9px 9px 0px rgba(0, 198, 255, 0.4);
-            animation: floatText 3s ease-in-out infinite;
-            margin-bottom: 0.25rem;
-        }
-
-        @keyframes floatText {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .dedication {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
-        }
-
-        .carousel-container {
+            height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1;
-            padding: 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -126,9 +76,7 @@
         .card-wrapper {
             position: relative;
             width: 100%;
-            max-width: 600px;
             height: 100%;
-            max-height: 500px;
             perspective: 1000px;
         }
 
@@ -136,16 +84,14 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: none;
             box-shadow:
-                0 8px 32px 0 rgba(31, 38, 135, 0.37),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-                0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 2rem 1.5rem;
+                inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.2);
+            padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -157,6 +103,11 @@
             pointer-events: none;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+        }
+
+        .card.splash {
+            justify-content: center;
+            padding: 2rem;
         }
 
         .card.active {
@@ -231,9 +182,44 @@
             }
         }
 
-        .card-icon {
-            font-size: 3.5rem;
+        .splash-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 4rem;
+            color: white;
+            text-shadow:
+                4px 4px 0px rgba(255, 107, 157, 0.8),
+                8px 8px 0px rgba(255, 160, 71, 0.6),
+                12px 12px 0px rgba(0, 198, 255, 0.4);
+            animation: floatText 3s ease-in-out infinite;
             margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .splash-tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .splash-dedication {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 2rem;
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
             animation: bounce 2s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
             flex-shrink: 0;
@@ -246,12 +232,12 @@
 
         .card-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: white;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             text-shadow:
-                2px 2px 0px rgba(255, 107, 157, 0.6),
-                4px 4px 0px rgba(0, 198, 255, 0.4);
+                3px 3px 0px rgba(255, 107, 157, 0.6),
+                6px 6px 0px rgba(0, 198, 255, 0.4);
             flex-shrink: 0;
         }
 
@@ -292,99 +278,22 @@
             margin-right: 0.5rem;
         }
 
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 0.75rem 0;
-            flex-shrink: 0;
-        }
-
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-btn:active {
-            transform: scale(0.95);
-        }
-
-        .indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.5rem 0;
-            flex-shrink: 0;
-        }
-
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: white;
-            transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-        }
-
-        .swipe-hint {
-            text-align: center;
-            padding: 0.5rem 0;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem;
-            font-style: italic;
-            animation: pulse 2s ease-in-out infinite;
-            flex-shrink: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        footer {
-            text-align: center;
-            padding: 0.75rem 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.75rem;
-            flex-shrink: 0;
-        }
-
         @media (max-width: 768px) {
-            .logo {
-                font-size: 1.8rem;
+            .splash-logo {
+                font-size: 3rem;
             }
 
-            .tagline {
-                font-size: 0.8rem;
+            .splash-tagline {
+                font-size: 0.95rem;
+                letter-spacing: 2px;
+            }
+
+            .splash-dedication {
+                font-size: 1.1rem;
             }
 
             .card-title {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
 
             .card-description {
@@ -392,7 +301,7 @@
             }
 
             .card {
-                padding: 1.5rem 1.25rem;
+                padding: 2rem 1.5rem;
             }
 
             .card-icon {
@@ -406,38 +315,20 @@
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="header">
-            <div class="logo">Deerfield Beach</div>
-            <div class="tagline">SURF'S UP! GOOD VIBES ONLY</div>
+    <div class="carousel-container">
+        <div class="card-wrapper" id="cardWrapper">
+            <!-- Cards will be dynamically created -->
         </div>
-
-        <div class="dedication">
-            For Paul - Catch the wave! 🏄
-        </div>
-
-        <div class="carousel-container">
-            <div class="card-wrapper" id="cardWrapper">
-                <!-- Cards will be dynamically created -->
-            </div>
-        </div>
-
-        <div class="controls">
-            <button class="nav-btn" id="prevBtn" aria-label="Previous">◀</button>
-            <button class="nav-btn" id="nextBtn" aria-label="Next">▶</button>
-        </div>
-
-        <div class="indicators" id="indicators"></div>
-
-        <div class="swipe-hint">← Swipe or use arrow keys →</div>
-
-        <footer>
-            Made with ❤️ for Paul | Keep Surfin' | Deerfield Beach Forever 🌴🌊
-        </footer>
     </div>
 
     <script>
         const cards = [
+            {
+                splash: true,
+                title: 'Deerfield Beach',
+                tagline: 'SURF\'S UP! GOOD VIBES ONLY',
+                dedication: 'For Paul - Catch the wave! 🏄'
+            },
             {
                 icon: '🏖️',
                 title: 'The Beach',
@@ -534,37 +425,36 @@
         let touchEndX = 0;
 
         const cardWrapper = document.getElementById('cardWrapper');
-        const indicatorsContainer = document.getElementById('indicators');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
 
         // Create cards
         cards.forEach((card, index) => {
             const cardEl = document.createElement('div');
-            cardEl.className = 'card';
-            cardEl.innerHTML = `
-                <div class="card-icon">${card.icon}</div>
-                <div class="card-title">${card.title}</div>
-                <div class="card-description">${card.description}</div>
-                ${card.details ? `
-                    <div class="card-details">
-                        <ul>
-                            ${card.details.map(detail => `<li>${detail}</li>`).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
-            `;
-            cardWrapper.appendChild(cardEl);
+            cardEl.className = card.splash ? 'card splash' : 'card';
 
-            // Create indicator
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            indicator.addEventListener('click', () => goToCard(index));
-            indicatorsContainer.appendChild(indicator);
+            if (card.splash) {
+                cardEl.innerHTML = `
+                    <div class="splash-logo">${card.title}</div>
+                    <div class="splash-tagline">${card.tagline}</div>
+                    <div class="splash-dedication">${card.dedication}</div>
+                `;
+            } else {
+                cardEl.innerHTML = `
+                    <div class="card-icon">${card.icon}</div>
+                    <div class="card-title">${card.title}</div>
+                    <div class="card-description">${card.description}</div>
+                    ${card.details ? `
+                        <div class="card-details">
+                            <ul>
+                                ${card.details.map(detail => `<li>${detail}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+            cardWrapper.appendChild(cardEl);
         });
 
         const cardElements = document.querySelectorAll('.card');
-        const indicatorElements = document.querySelectorAll('.indicator');
 
         function updateCards() {
             cardElements.forEach((card, index) => {
@@ -574,10 +464,6 @@
                 } else if (index < currentIndex) {
                     card.classList.add('prev');
                 }
-            });
-
-            indicatorElements.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
             });
         }
 
@@ -611,10 +497,6 @@
             const nextIndex = (currentIndex - 1 + cards.length) % cards.length;
             goToCard(nextIndex);
         }
-
-        // Event listeners
-        prevBtn.addEventListener('click', prevCard);
-        nextBtn.addEventListener('click', nextCard);
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
