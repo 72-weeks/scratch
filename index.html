@@ -1,563 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Deerfield Beach - Surf's Up! 🏄</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Raleway:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="David Hoffman — Product leader, founder, and builder based in Oslo.">
+  <title>David Hoffman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       Reset
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* ============================================================
+       Tokens
+    ============================================================ */
+    :root {
+      --bg:       #F7F4EF;
+      --ink:      #141412;
+      --muted:    #797469;
+      --faint:    #ABA89F;
+      --rule:     #E0DCD5;
+      --accent:   #3B5BA5;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Manrope', system-ui, sans-serif;
+      --measure:  660px;
+      --pad:      clamp(22px, 6vw, 72px);
+    }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-            -webkit-overflow-scrolling: touch;
-        }
+    /* ============================================================
+       Base
+    ============================================================ */
+    html {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg,
-                #00c6ff 0%,
-                #0072ff 25%,
-                #ff6b9d 50%,
-                #ffa047 75%,
-                #ffe259 100%);
-            background-size: 400% 400%;
-            animation: beachGradient 20s ease infinite;
-            position: relative;
-            touch-action: pan-y;
-        }
+    body {
+      max-width: calc(var(--measure) + var(--pad) * 2);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
 
-        @keyframes beachGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 1px;
+    }
 
-        /* Animated wave overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-            animation: waves 15s ease-in-out infinite;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        @keyframes waves {
-            0%, 100% { opacity: 0.5; transform: translateY(0px); }
-            50% { opacity: 0.8; transform: translateY(-20px); }
-        }
+    /* ============================================================
+       Reveal animation
+    ============================================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .carousel-container {
-            width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
+    /* ============================================================
+       Shared: section label (h2)
+    ============================================================ */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 28px;
+    }
 
-        .card-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-        }
+    /* ============================================================
+       Hero
+    ============================================================ */
+    .hero {
+      padding-top: clamp(72px, 13vw, 132px);
+      padding-bottom: clamp(64px, 10vw, 112px);
+    }
 
-        .card {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: none;
-            box-shadow:
-                inset 0 0 0 1px rgba(255, 255, 255, 0.15),
-                0 20px 60px rgba(0, 0, 0, 0.2);
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            opacity: 0;
-            transform: translateX(100%) rotateY(20deg) scale(0.8);
-            pointer-events: none;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(50px, 11vw, 100px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(18px, 2.5vw, 28px);
+    }
 
-        .card.splash {
-            justify-content: center;
-            padding: 2rem;
-        }
+    .hero-descriptor {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
 
-        .card.active {
-            opacity: 1;
-            transform: translateX(0) rotateY(0) scale(1);
-            pointer-events: auto;
-            z-index: 2;
-        }
+    .hero-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: clamp(24px, 4vw, 40px);
+    }
 
-        .card.prev {
-            opacity: 0;
-            transform: translateX(-100%) rotateY(-20deg) scale(0.8);
-        }
+    .hero-intro {
+      max-width: 500px;
+    }
 
-        .card.entering-right {
-            animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
+    .hero-intro p {
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+    }
 
-        .card.entering-left {
-            animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
+    .hero-location {
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+    }
 
-        .card.exiting-left {
-            animation: slideOutLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
+    /* ============================================================
+       Work
+    ============================================================ */
+    .work {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
 
-        .card.exiting-right {
-            animation: slideOutRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
+    .work-note {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: clamp(32px, 4vw, 48px);
+      max-width: 400px;
+      line-height: 1.65;
+    }
 
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%) rotateY(20deg) scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) rotateY(0) scale(1);
-            }
-        }
+    .project-list {
+      list-style: none;
+    }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100%) rotateY(-20deg) scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) rotateY(0) scale(1);
-            }
-        }
+    .project-item {
+      padding: clamp(18px, 3vw, 26px) 0;
+      border-bottom: 1px solid var(--rule);
+    }
 
-        @keyframes slideOutLeft {
-            from {
-                opacity: 1;
-                transform: translateX(0) rotateY(0) scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(-100%) rotateY(-20deg) scale(0.8);
-            }
-        }
+    .project-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
 
-        @keyframes slideOutRight {
-            from {
-                opacity: 1;
-                transform: translateX(0) rotateY(0) scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100%) rotateY(20deg) scale(0.8);
-            }
-        }
+    .project-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
 
-        .splash-logo {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 4rem;
-            color: white;
-            text-shadow:
-                4px 4px 0px rgba(255, 107, 157, 0.8),
-                8px 8px 0px rgba(255, 160, 71, 0.6),
-                12px 12px 0px rgba(0, 198, 255, 0.4);
-            animation: floatText 3s ease-in-out infinite;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.8vw, 22px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
 
-        @keyframes floatText {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
+    .project-tag {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
 
-        .splash-tagline {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 0.5rem;
-        }
+    .tag-current  { color: var(--accent); }
+    .tag-shipped  { color: var(--muted); }
+    .tag-progress { color: var(--muted); }
+    .tag-acquired { color: var(--muted); }
 
-        .splash-dedication {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-top: 2rem;
-        }
+    .project-desc {
+      font-size: clamp(13px, 1.8vw, 14px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 520px;
+    }
 
-        .card-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: bounce 2s ease-in-out infinite;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-            flex-shrink: 0;
-        }
+    /* ============================================================
+       Philosophy
+    ============================================================ */
+    .philosophy {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+    .philosophy-body {
+      max-width: 460px;
+    }
 
-        .card-title {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow:
-                3px 3px 0px rgba(255, 107, 157, 0.6),
-                6px 6px 0px rgba(0, 198, 255, 0.4);
-            flex-shrink: 0;
-        }
+    .philosophy-body p {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+    }
 
-        .card-description {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.6;
-            font-weight: 400;
-            max-width: 500px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0;
-        }
+    /* ============================================================
+       Contact
+    ============================================================ */
+    .contact {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
 
-        .card-details {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            width: 100%;
-            flex-shrink: 0;
-        }
+    .contact-prompt {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
 
-        .card-details ul {
-            list-style: none;
-            text-align: left;
-            max-width: 450px;
-            margin: 0 auto;
-        }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
 
-        .card-details li {
-            color: rgba(255, 255, 255, 0.9);
-            padding: 0.35rem 0;
-            font-size: 0.95rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
+    .contact-form {
+      display: flex;
+      max-width: 400px;
+    }
 
-        .card-details li::before {
-            content: '🌊 ';
-            margin-right: 0.5rem;
-        }
+    .contact-input {
+      flex: 1;
+      border: 1px solid var(--rule);
+      border-right: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      padding: 12px 16px;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s;
+    }
 
-        @media (max-width: 768px) {
-            .splash-logo {
-                font-size: 3rem;
-            }
+    .contact-input::placeholder {
+      color: var(--faint);
+    }
 
-            .splash-tagline {
-                font-size: 0.95rem;
-                letter-spacing: 2px;
-            }
+    .contact-input:focus {
+      border-color: var(--ink);
+    }
 
-            .splash-dedication {
-                font-size: 1.1rem;
-            }
+    .contact-input:focus + .contact-btn {
+      border-left-color: var(--ink);
+    }
 
-            .card-title {
-                font-size: 2rem;
-            }
+    .contact-btn {
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
 
-            .card-description {
-                font-size: 0.95rem;
-            }
+    .contact-btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
 
-            .card {
-                padding: 2rem 1.5rem;
-            }
+    .contact-success {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      padding: 13px 0;
+    }
 
-            .card-icon {
-                font-size: 3rem;
-            }
+    /* ============================================================
+       Footer
+    ============================================================ */
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: clamp(28px, 4vw, 44px) 0;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
 
-            .card-details li {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    .footer-link {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--ink);
+    }
+  </style>
 </head>
 <body>
-    <div class="carousel-container">
-        <div class="card-wrapper" id="cardWrapper">
-            <!-- Cards will be dynamically created -->
-        </div>
+
+  <!-- ============================================================
+       Hero
+  ============================================================ -->
+  <header class="hero">
+    <h1 class="hero-name reveal">David Hoffman</h1>
+    <p class="hero-descriptor reveal">Product · Design · Software · AI</p>
+    <hr class="hero-rule reveal" role="presentation">
+    <div class="hero-intro reveal">
+      <p>Currently leading Shop Minis at Shopify. Previously founded Next Big Sound and Next Big Shop. Interested in agentic systems, developer platforms, and taste-driven commerce.</p>
+      <p class="hero-location">Oslo · New York</p>
     </div>
+  </header>
 
-    <script>
-        const cards = [
-            {
-                splash: true,
-                title: 'Deerfield Beach',
-                tagline: 'SURF\'S UP! GOOD VIBES ONLY',
-                dedication: 'For Paul - Catch the wave! 🏄'
-            },
-            {
-                icon: '🏖️',
-                title: 'The Beach',
-                description: 'Miles of pristine Blue Wave certified coastline with golden sand and crystal-clear Atlantic waters.',
-                details: [
-                    'Gentle waves perfect for swimming',
-                    'Breathtaking sunrise views',
-                    'ADA-accessible beach wheelchairs',
-                    'Clean facilities & lifeguard stations'
-                ]
-            },
-            {
-                icon: '🎣',
-                title: 'Fishing Pier',
-                description: 'The iconic 720-foot International Fishing Pier extends into the Atlantic Ocean.',
-                details: [
-                    'Open 24/7 year-round',
-                    'No fishing license required',
-                    'Bait & tackle shop on-site',
-                    'Catch snapper, mackerel, pompano & more'
-                ]
-            },
-            {
-                icon: '🌴',
-                title: 'Quiet Waters Park',
-                description: 'A 430-acre paradise featuring water sports, camping, art galleries, and nature trails.',
-                details: [
-                    'Cable water skiing adventures',
-                    'Splash park for families',
-                    'Beautiful camping areas',
-                    'Art galleries & exhibitions'
-                ]
-            },
-            {
-                icon: '🤿',
-                title: 'Snorkeling & Diving',
-                description: 'Explore vibrant coral reefs and historic shipwrecks teeming with tropical marine life.',
-                details: [
-                    'Colorful tropical fish',
-                    'Coral reef ecosystems',
-                    'Historic shipwreck sites',
-                    'Year-round diving conditions'
-                ]
-            },
-            {
-                icon: '🛒',
-                title: 'Farmers Market',
-                description: 'Every Saturday morning brings fresh local produce, artisan goods, and live music.',
-                details: [
-                    'Fresh Florida produce',
-                    'Local artisan crafts',
-                    'Live music performances',
-                    'Community gathering spot'
-                ]
-            },
-            {
-                icon: '🍽️',
-                title: 'Beachfront Dining',
-                description: 'Savor fresh seafood with ocean views at casual waterfront restaurants and cafes.',
-                details: [
-                    'Fresh-caught seafood daily',
-                    'Stunning ocean views',
-                    'Casual beach atmosphere',
-                    'Live music at select venues'
-                ]
-            },
-            {
-                icon: '🌅',
-                title: 'Best Times',
-                description: 'Year-round sunshine! Winter (Dec-Mar) offers perfect 70-80°F weather and lower humidity.',
-                details: [
-                    'Winter: Perfect beach weather',
-                    'Spring: Fewer crowds, great deals',
-                    'Summer: Beach lover\'s paradise',
-                    'Fall: Pleasant temperatures return'
-                ]
-            },
-            {
-                icon: '💡',
-                title: 'Insider Tips',
-                description: 'Visit at sunrise for the most peaceful experience and stunning photo opportunities.',
-                details: [
-                    'Arrive early for best parking',
-                    'Sea turtle season: March-October',
-                    'Try JB\'s on the Beach',
-                    'Attend annual beach festivals'
-                ]
-            }
-        ];
+  <!-- ============================================================
+       Selected Work
+  ============================================================ -->
+  <section class="work" aria-labelledby="work-heading">
+    <h2 class="section-label reveal" id="work-heading">Selected Work</h2>
+    <p class="work-note reveal">Some things were companies. Some were products. Some are ongoing experiments.</p>
 
-        let currentIndex = 0;
-        let isAnimating = false;
-        let touchStartX = 0;
-        let touchEndX = 0;
+    <ul class="project-list" role="list">
 
-        const cardWrapper = document.getElementById('cardWrapper');
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Shop Minis</span>
+          <span class="project-tag tag-current">Current</span>
+        </div>
+        <p class="project-desc">Developer platform for native commerce experiences inside Shop.</p>
+      </li>
 
-        // Create cards
-        cards.forEach((card, index) => {
-            const cardEl = document.createElement('div');
-            cardEl.className = card.splash ? 'card splash' : 'card';
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Agentic Commerce</span>
+          <span class="project-tag tag-current">Current</span>
+        </div>
+        <p class="project-desc">Exploring how retrieval, ranking, and generative interfaces can make commerce feel timely, contextual, and useful.</p>
+      </li>
 
-            if (card.splash) {
-                cardEl.innerHTML = `
-                    <div class="splash-logo">${card.title}</div>
-                    <div class="splash-tagline">${card.tagline}</div>
-                    <div class="splash-dedication">${card.dedication}</div>
-                `;
-            } else {
-                cardEl.innerHTML = `
-                    <div class="card-icon">${card.icon}</div>
-                    <div class="card-title">${card.title}</div>
-                    <div class="card-description">${card.description}</div>
-                    ${card.details ? `
-                        <div class="card-details">
-                            <ul>
-                                ${card.details.map(detail => `<li>${detail}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
-                `;
-            }
-            cardWrapper.appendChild(cardEl);
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">You Can Do It Lists</span>
+          <span class="project-tag tag-shipped">Shipped</span>
+        </div>
+        <p class="project-desc">A consumer shopping product built around curated, list-based discovery.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Capsule Mini</span>
+          <span class="project-tag tag-shipped">Shipped</span>
+        </div>
+        <p class="project-desc">A capsule wardrobe shopping experience built as a Shop Mini.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Fuzzies</span>
+          <span class="project-tag tag-progress">In Progress</span>
+        </div>
+        <p class="project-desc">An AI character creation app for kids, designed for delight, expression, and play.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Threadline</span>
+          <span class="project-tag tag-progress">In Progress</span>
+        </div>
+        <p class="project-desc">An experiment in lightweight, intentional communication.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Next Big Sound</span>
+          <span class="project-tag tag-acquired">Acquired</span>
+        </div>
+        <p class="project-desc">Music analytics platform used across the industry; acquired by Pandora.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Next Big Shop</span>
+          <span class="project-tag tag-acquired">Acquired</span>
+        </div>
+        <p class="project-desc">Social commerce platform built around creator- and community-driven shopping.</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ============================================================
+       Philosophy
+  ============================================================ -->
+  <section class="philosophy" aria-labelledby="philosophy-heading">
+    <h2 class="section-label reveal" id="philosophy-heading">Working Style</h2>
+    <div class="philosophy-body reveal">
+      <p>
+        I like products with clear utility, strong taste, and real edges.<br>
+        I care about systems as much as surfaces.<br>
+        Lately I'm especially interested in software that feels more agentic,<br>
+        more personal, and more alive.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Contact
+  ============================================================ -->
+  <section class="contact" aria-labelledby="contact-heading">
+    <h2 class="section-label reveal" id="contact-heading">Stay in Touch</h2>
+    <p class="contact-prompt reveal">Occasional notes when I make something worth sharing.</p>
+    <div class="reveal">
+      <label class="sr-only" for="email-input">Your email address</label>
+      <form class="contact-form" id="subscribe-form" novalidate>
+        <input
+          class="contact-input"
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="your@email.com"
+          autocomplete="email"
+          required
+        >
+        <button class="contact-btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Footer
+       Update href values with real profile URLs before deploying.
+  ============================================================ -->
+  <footer class="footer">
+    <a class="footer-link" href="https://linkedin.com/in/davidhoffman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="footer-link" href="https://github.com/davidhoffman" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="footer-link" href="mailto:david@hoffmanbuilt.com">Email</a>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
-        const cardElements = document.querySelectorAll('.card');
+      els.forEach(function (el) { observer.observe(el); });
+    }());
 
-        function updateCards() {
-            cardElements.forEach((card, index) => {
-                card.classList.remove('active', 'prev');
-                if (index === currentIndex) {
-                    card.classList.add('active');
-                } else if (index < currentIndex) {
-                    card.classList.add('prev');
-                }
-            });
-        }
+    // Email subscription (placeholder)
+    document.getElementById('subscribe-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = this.querySelector('input[type="email"]').value.trim();
+      if (!email) return;
+      console.log('New subscriber:', email);
+      var success = document.createElement('p');
+      success.className = 'contact-success';
+      success.textContent = 'Got it. I\'ll be in touch.';
+      this.replaceWith(success);
+    });
+  </script>
 
-        function goToCard(index) {
-            if (isAnimating || index === currentIndex) return;
-
-            isAnimating = true;
-            const direction = index > currentIndex ? 'right' : 'left';
-            const oldCard = cardElements[currentIndex];
-            const newCard = cardElements[index];
-
-            oldCard.classList.add(direction === 'right' ? 'exiting-left' : 'exiting-right');
-            newCard.classList.add(direction === 'right' ? 'entering-right' : 'entering-left');
-
-            setTimeout(() => {
-                oldCard.classList.remove('exiting-left', 'exiting-right', 'active');
-                newCard.classList.remove('entering-left', 'entering-right');
-                newCard.classList.add('active');
-                currentIndex = index;
-                updateCards();
-                isAnimating = false;
-            }, 600);
-        }
-
-        function nextCard() {
-            const nextIndex = (currentIndex + 1) % cards.length;
-            goToCard(nextIndex);
-        }
-
-        function prevCard() {
-            const nextIndex = (currentIndex - 1 + cards.length) % cards.length;
-            goToCard(nextIndex);
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevCard();
-            if (e.key === 'ArrowRight') nextCard();
-        });
-
-        // Touch/swipe support
-        cardWrapper.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        cardWrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextCard();
-                } else {
-                    prevCard();
-                }
-            }
-        }
-
-        // Mouse drag support
-        let isDragging = false;
-        let dragStartX = 0;
-
-        cardWrapper.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            dragStartX = e.screenX;
-        });
-
-        cardWrapper.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            const dragEndX = e.screenX;
-            const diff = dragStartX - dragEndX;
-            const swipeThreshold = 50;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextCard();
-                } else {
-                    prevCard();
-                }
-            }
-        });
-
-        cardWrapper.addEventListener('mouseleave', () => {
-            isDragging = false;
-        });
-
-        // Initialize
-        updateCards();
-    </script>
 </body>
 </html>
