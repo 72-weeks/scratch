@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="David Hoffman — Product leader, founder, and builder based in Oslo.">
+  <title>David Hoffman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       Reset
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ============================================================
+       Tokens
+    ============================================================ */
+    :root {
+      --bg:       #F7F4EF;
+      --ink:      #141412;
+      --muted:    #797469;
+      --faint:    #ABA89F;
+      --rule:     #E0DCD5;
+      --accent:   #3B5BA5;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Manrope', system-ui, sans-serif;
+      --measure:  660px;
+      --pad:      clamp(22px, 6vw, 72px);
+    }
+
+    /* ============================================================
+       Base
+    ============================================================ */
+    html {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      max-width: calc(var(--measure) + var(--pad) * 2);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 1px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       Reveal animation
+    ============================================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================================
+       Shared: section label (h2)
+    ============================================================ */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 28px;
+    }
+
+    /* ============================================================
+       Hero
+    ============================================================ */
+    .hero {
+      padding-top: clamp(72px, 13vw, 132px);
+      padding-bottom: clamp(64px, 10vw, 112px);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(50px, 11vw, 100px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(18px, 2.5vw, 28px);
+    }
+
+    .hero-descriptor {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .hero-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: clamp(24px, 4vw, 40px);
+    }
+
+    .hero-intro {
+      max-width: 500px;
+    }
+
+    .hero-intro p {
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    .hero-location {
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+    }
+
+    /* ============================================================
+       Work
+    ============================================================ */
+    .work {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
+
+    .work-note {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: clamp(32px, 4vw, 48px);
+      max-width: 400px;
+      line-height: 1.65;
+    }
+
+    .project-list {
+      list-style: none;
+    }
+
+    .project-item {
+      padding: clamp(18px, 3vw, 26px) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.8vw, 22px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .project-tag {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .tag-current  { color: var(--accent); }
+    .tag-shipped  { color: var(--muted); }
+    .tag-progress { color: var(--muted); }
+    .tag-acquired { color: var(--muted); }
+
+    .project-desc {
+      font-size: clamp(13px, 1.8vw, 14px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    /* ============================================================
+       Philosophy
+    ============================================================ */
+    .philosophy {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
+
+    .philosophy-body {
+      max-width: 460px;
+    }
+
+    .philosophy-body p {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* ============================================================
+       Contact
+    ============================================================ */
+    .contact {
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(40px, 6vw, 60px);
+      padding-bottom: clamp(72px, 10vw, 120px);
+    }
+
+    .contact-prompt {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      max-width: 400px;
+    }
+
+    .contact-input {
+      flex: 1;
+      border: 1px solid var(--rule);
+      border-right: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      padding: 12px 16px;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-input::placeholder {
+      color: var(--faint);
+    }
+
+    .contact-input:focus {
+      border-color: var(--ink);
+    }
+
+    .contact-input:focus + .contact-btn {
+      border-left-color: var(--ink);
+    }
+
+    .contact-btn {
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    .contact-success {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      padding: 13px 0;
+    }
+
+    /* ============================================================
+       Footer
+    ============================================================ */
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: clamp(28px, 4vw, 44px) 0;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Hero
+  ============================================================ -->
+  <header class="hero">
+    <h1 class="hero-name reveal">David Hoffman</h1>
+    <p class="hero-descriptor reveal">Product · Design · Software · AI</p>
+    <hr class="hero-rule reveal" role="presentation">
+    <div class="hero-intro reveal">
+      <p>Currently leading Shop Minis at Shopify. Previously founded Next Big Sound and Next Big Shop. Interested in agentic systems, developer platforms, and taste-driven commerce.</p>
+      <p class="hero-location">Oslo · New York</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Selected Work
+  ============================================================ -->
+  <section class="work" aria-labelledby="work-heading">
+    <h2 class="section-label reveal" id="work-heading">Selected Work</h2>
+    <p class="work-note reveal">Some things were companies. Some were products. Some are ongoing experiments.</p>
+
+    <ul class="project-list" role="list">
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Shop Minis</span>
+          <span class="project-tag tag-current">Current</span>
+        </div>
+        <p class="project-desc">Developer platform for native commerce experiences inside Shop.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Agentic Commerce</span>
+          <span class="project-tag tag-current">Current</span>
+        </div>
+        <p class="project-desc">Exploring how retrieval, ranking, and generative interfaces can make commerce feel timely, contextual, and useful.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">You Can Do It Lists</span>
+          <span class="project-tag tag-shipped">Shipped</span>
+        </div>
+        <p class="project-desc">A consumer shopping product built around curated, list-based discovery.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Capsule Mini</span>
+          <span class="project-tag tag-shipped">Shipped</span>
+        </div>
+        <p class="project-desc">A capsule wardrobe shopping experience built as a Shop Mini.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Fuzzies</span>
+          <span class="project-tag tag-progress">In Progress</span>
+        </div>
+        <p class="project-desc">An AI character creation app for kids, designed for delight, expression, and play.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Threadline</span>
+          <span class="project-tag tag-progress">In Progress</span>
+        </div>
+        <p class="project-desc">An experiment in lightweight, intentional communication.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Next Big Sound</span>
+          <span class="project-tag tag-acquired">Acquired</span>
+        </div>
+        <p class="project-desc">Music analytics platform used across the industry; acquired by Pandora.</p>
+      </li>
+
+      <li class="project-item reveal">
+        <div class="project-header">
+          <span class="project-title">Next Big Shop</span>
+          <span class="project-tag tag-acquired">Acquired</span>
+        </div>
+        <p class="project-desc">Social commerce platform built around creator- and community-driven shopping.</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ============================================================
+       Philosophy
+  ============================================================ -->
+  <section class="philosophy" aria-labelledby="philosophy-heading">
+    <h2 class="section-label reveal" id="philosophy-heading">Working Style</h2>
+    <div class="philosophy-body reveal">
+      <p>
+        I like products with clear utility, strong taste, and real edges.<br>
+        I care about systems as much as surfaces.<br>
+        Lately I'm especially interested in software that feels more agentic,<br>
+        more personal, and more alive.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Contact
+  ============================================================ -->
+  <section class="contact" aria-labelledby="contact-heading">
+    <h2 class="section-label reveal" id="contact-heading">Stay in Touch</h2>
+    <p class="contact-prompt reveal">Occasional notes when I make something worth sharing.</p>
+    <div class="reveal">
+      <label class="sr-only" for="email-input">Your email address</label>
+      <form class="contact-form" id="subscribe-form" novalidate>
+        <input
+          class="contact-input"
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="your@email.com"
+          autocomplete="email"
+          required
+        >
+        <button class="contact-btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Footer
+       Update href values with real profile URLs before deploying.
+  ============================================================ -->
+  <footer class="footer">
+    <a class="footer-link" href="https://linkedin.com/in/davidhoffman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="footer-link" href="https://github.com/davidhoffman" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="footer-link" href="mailto:david@hoffmanbuilt.com">Email</a>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+      els.forEach(function (el) { observer.observe(el); });
+    }());
+
+    // Email subscription (placeholder)
+    document.getElementById('subscribe-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = this.querySelector('input[type="email"]').value.trim();
+      if (!email) return;
+      console.log('New subscriber:', email);
+      var success = document.createElement('p');
+      success.className = 'contact-success';
+      success.textContent = 'Got it. I\'ll be in touch.';
+      this.replaceWith(success);
+    });
+  </script>
+
+</body>
+</html>
