@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P.A. Larsen — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-parchment:    #EDE4CF;
+      --color-parchment-lt: #F5F0E6;
+      --color-parchment-dk: #D9CDB5;
+      --color-burgundy:     #8B2635;
+      --color-burgundy-dk:  #5E1A24;
+      --color-burgundy-lt:  #B84A5A;
+      --color-ink:          #1C1208;
+      --color-bottle:       #2E3D25;
+      --color-muted:        #9B8C7E;
+      --color-rule:         #C4B49A;
+      --font-display:  'Cormorant Garamond', Georgia, serif;
+      --font-smallcap: 'Cormorant SC', Georgia, serif;
+      --text-xs:   0.625rem;
+      --text-sm:   0.8125rem;
+      --text-base: 1rem;
+      --text-md:   1.25rem;
+      --text-lg:   1.75rem;
+      --text-xl:   2.5rem;
+      --text-2xl:  4rem;
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --radius-pill: 999px;
+      --tracking-tight:  -0.01em;
+      --tracking-wide:    0.08em;
+      --tracking-widest:  0.22em;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--color-parchment-lt);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 960px; margin: 0 auto; padding: var(--space-16) var(--space-8); }
+    .section { margin-bottom: var(--space-24); }
+    .section-label {
+      font-family: var(--font-smallcap);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      color: var(--color-muted);
+      margin-bottom: var(--space-6);
+    }
+    .rule { border: none; border-top: 1px solid var(--color-rule); margin: var(--space-12) 0; }
+    .rule-double { border: none; height: 5px; border-top: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); margin: var(--space-12) 0; }
+
+    /* Page header */
+    .page-header { text-align: center; padding-bottom: var(--space-16); border-bottom: 1px solid var(--color-rule); margin-bottom: var(--space-16); }
+    .page-header .house { font-family: var(--font-smallcap); font-size: var(--text-sm); letter-spacing: var(--tracking-widest); color: var(--color-burgundy); display: block; margin-bottom: var(--space-3); }
+    .page-header h1 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 300; letter-spacing: var(--tracking-wide); color: var(--color-burgundy-dk); line-height: 1; }
+    .page-header .sub { font-family: var(--font-display); font-size: var(--text-md); font-weight: 300; letter-spacing: var(--tracking-wide); color: var(--color-muted); display: block; margin-top: var(--space-4); }
+
+    /* Swatches */
+    .swatches { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    .swatch { flex: 1; min-width: 90px; }
+    .swatch-block { height: 80px; border-radius: var(--radius-sm); margin-bottom: var(--space-2); border: 1px solid rgba(0,0,0,0.06); }
+    .swatch-name { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); display: block; }
+    .swatch-value { font-size: var(--text-xs); color: var(--color-muted); }
+
+    /* Type */
+    .type-specimen { display: flex; flex-direction: column; gap: var(--space-8); }
+    .type-row { display: flex; align-items: baseline; gap: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-parchment-dk); }
+    .type-meta { min-width: 180px; flex-shrink: 0; }
+    .type-meta .role { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); color: var(--color-muted); display: block; }
+    .type-meta .specs { font-size: var(--text-xs); color: var(--color-rule); }
+    .t-display { font-size: var(--text-2xl); font-weight: 300; letter-spacing: var(--tracking-wide); color: var(--color-burgundy-dk); line-height: 1; }
+    .t-appellation { font-size: var(--text-xl); font-weight: 400; letter-spacing: var(--tracking-wide); color: var(--color-burgundy); line-height: 1.1; }
+    .t-house { font-family: var(--font-smallcap); font-size: var(--text-sm); letter-spacing: var(--tracking-widest); color: var(--color-burgundy); }
+    .t-heading { font-size: var(--text-lg); font-weight: 400; color: var(--color-ink); }
+    .t-subheading { font-size: var(--text-md); font-weight: 300; font-style: italic; color: var(--color-burgundy); }
+    .t-body { font-size: var(--text-base); font-weight: 300; line-height: 1.7; color: var(--color-ink); max-width: 520px; }
+    .t-caption { font-size: var(--text-sm); font-weight: 300; color: var(--color-muted); letter-spacing: var(--tracking-wide); }
+    .t-fine { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); color: var(--color-muted); }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+    .btn { font-family: var(--font-smallcap); font-size: var(--text-sm); letter-spacing: var(--tracking-widest); padding: var(--space-3) var(--space-8); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease; display: inline-block; text-decoration: none; }
+    .btn-primary { background: var(--color-burgundy); color: var(--color-parchment-lt); border: 1px solid var(--color-burgundy); }
+    .btn-primary:hover { background: var(--color-burgundy-dk); border-color: var(--color-burgundy-dk); }
+    .btn-ghost { background: transparent; color: var(--color-burgundy); border: 1px solid var(--color-burgundy); }
+    .btn-ghost:hover { background: var(--color-parchment); }
+    .btn-ink { background: var(--color-ink); color: var(--color-parchment); border: 1px solid var(--color-ink); }
+    .btn-sm { font-size: var(--text-xs); padding: var(--space-2) var(--space-6); }
+
+    /* Badges */
+    .badge-row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .badge { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); display: inline-block; }
+    .badge-burgundy { background: var(--color-burgundy); color: var(--color-parchment-lt); }
+    .badge-outline { border: 1px solid var(--color-burgundy); color: var(--color-burgundy); }
+    .badge-parchment { background: var(--color-parchment-dk); color: var(--color-ink); }
+    .badge-bottle { background: var(--color-bottle); color: var(--color-parchment); }
+
+    /* Cards */
+    .card-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6); }
+    .card { background: var(--color-parchment); border: 1px solid var(--color-parchment-dk); border-radius: var(--radius-md); padding: var(--space-8); }
+    .card-label { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); color: var(--color-burgundy); display: block; margin-bottom: var(--space-3); }
+    .card-title { font-size: var(--text-lg); font-weight: 300; color: var(--color-ink); line-height: 1.2; margin-bottom: var(--space-3); }
+    .card-body { font-size: var(--text-sm); font-weight: 300; color: var(--color-muted); line-height: 1.6; }
+    .card-dark { background: var(--color-ink); border-color: var(--color-ink); }
+    .card-dark .card-label { color: var(--color-burgundy-lt); }
+    .card-dark .card-title { color: var(--color-parchment); }
+    .card-dark .card-body { color: var(--color-muted); }
+    .card-wine { background: var(--color-burgundy); border-color: var(--color-burgundy-dk); }
+    .card-wine .card-label { color: var(--color-parchment-dk); }
+    .card-wine .card-title { color: var(--color-parchment-lt); }
+    .card-wine .card-body { color: rgba(237,228,207,0.7); }
+
+    /* Inputs */
+    .input-row { display: flex; flex-direction: column; gap: var(--space-4); max-width: 420px; }
+    .field { display: flex; flex-direction: column; gap: var(--space-2); }
+    .field label { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); color: var(--color-muted); }
+    .field input, .field select, .field textarea { font-family: var(--font-display); font-size: var(--text-base); font-weight: 300; color: var(--color-ink); background: var(--color-parchment-lt); border: 1px solid var(--color-parchment-dk); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); outline: none; transition: border-color 0.2s; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--color-burgundy); }
+    .field textarea { resize: vertical; min-height: 80px; }
+
+    /* Dividers */
+    .divider-ornament { display: flex; align-items: center; gap: var(--space-4); margin: var(--space-8) 0; }
+    .divider-ornament::before, .divider-ornament::after { content: ''; flex: 1; height: 1px; background: var(--color-rule); }
+    .divider-ornament span { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 300; color: var(--color-rule); line-height: 1; }
+
+    /* Spacing scale */
+    .space-scale { display: flex; flex-direction: column; gap: var(--space-3); }
+    .space-row { display: flex; align-items: center; gap: var(--space-4); }
+    .space-bar { background: var(--color-burgundy); height: 8px; border-radius: var(--radius-sm); opacity: 0.7; }
+    .space-meta { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); color: var(--color-muted); min-width: 140px; }
+
+    /* Label mockup */
+    .label-mockup { background: var(--color-parchment); border: 1px solid var(--color-parchment-dk); border-radius: var(--radius-sm); padding: var(--space-12) var(--space-16); text-align: center; max-width: 340px; position: relative; }
+    .label-mockup::before { content: ''; position: absolute; inset: var(--space-3); border: 1px solid var(--color-rule); border-radius: var(--radius-sm); pointer-events: none; }
+    .lm-seal { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-widest); color: var(--color-burgundy); display: block; margin-bottom: var(--space-3); }
+    .lm-producer { font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; letter-spacing: var(--tracking-wide); color: var(--color-burgundy); line-height: 1; display: block; }
+    .lm-appellation { font-family: var(--font-display); font-size: var(--text-md); font-weight: 400; letter-spacing: var(--tracking-wide); color: var(--color-burgundy); display: block; margin-top: var(--space-4); line-height: 1.3; }
+    .lm-meta { display: flex; justify-content: space-between; margin-top: var(--space-6); }
+    .lm-meta span { font-family: var(--font-smallcap); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); color: var(--color-burgundy); font-weight: 300; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <span class="house">Kristiania</span>
+    <h1>P.A. Larsen</h1>
+    <span class="sub">Design System — Coteaux Bourguignons</span>
+  </header>
+
+  <section class="section">
+    <p class="section-label">Color Tokens</p>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-parchment-lt)"></div><span class="swatch-name">Parchment Lt</span><span class="swatch-value">#F5F0E6</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-parchment)"></div><span class="swatch-name">Parchment</span><span class="swatch-value">#EDE4CF</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-parchment-dk)"></div><span class="swatch-name">Parchment Dk</span><span class="swatch-value">#D9CDB5</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-burgundy-lt)"></div><span class="swatch-name">Burgundy Lt</span><span class="swatch-value">#B84A5A</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-burgundy)"></div><span class="swatch-name">Burgundy</span><span class="swatch-value">#8B2635</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-burgundy-dk)"></div><span class="swatch-name">Burgundy Dk</span><span class="swatch-value">#5E1A24</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-bottle)"></div><span class="swatch-name">Bottle</span><span class="swatch-value">#2E3D25</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-ink)"></div><span class="swatch-name">Ink</span><span class="swatch-value">#1C1208</span></div>
+      <div class="swatch"><div class="swatch-block" style="background:var(--color-muted)"></div><span class="swatch-name">Muted</span><span class="swatch-value">#9B8C7E</span></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="section">
+    <p class="section-label">Typography</p>
+    <div class="type-specimen">
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Display</span><span class="specs">Cormorant Garamond 300 · 64px · +0.08em</span></div>
+        <span class="t-display">P.A. Larsen</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Appellation</span><span class="specs">Cormorant Garamond 400 · 40px · +0.08em</span></div>
+        <span class="t-appellation">Coteaux Bourguignons</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">House / Small Caps</span><span class="specs">Cormorant SC 400 · 13px · +0.22em</span></div>
+        <span class="t-house">Kristiania — Est. 1886</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Heading</span><span class="specs">Cormorant Garamond 400 · 28px</span></div>
+        <span class="t-heading">Tasting Notes</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Subheading</span><span class="specs">Cormorant Garamond 300 italic · 20px</span></div>
+        <span class="t-subheading">Dark cherry, dried rose, earthy minerality</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Body</span><span class="specs">Cormorant Garamond 300 · 16px · 1.7 leading</span></div>
+        <span class="t-body">A blend of Gamay and Pinot Noir from limestone-clay soils in the heart of Burgundy. Aged eight months in neutral oak, this wine speaks with quiet authority — precise, mineral, and deeply satisfying.</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Caption</span><span class="specs">Cormorant Garamond 300 · 13px · +0.08em</span></div>
+        <span class="t-caption">Vintage 2023 — 12.5% vol — 75cl — Contains sulphites</span>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="role">Fine Print</span><span class="specs">Cormorant SC 300 · 10px · +0.22em</span></div>
+        <span class="t-fine">Appellation Coteaux Bourguignons Contrôlée — Mis en bouteille au domaine</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-double"></div>
+
+  <section class="section">
+    <p class="section-label">Buttons</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Explore Wines</a>
+      <a class="btn btn-ghost" href="#">Learn More</a>
+      <a class="btn btn-ink" href="#">Reserve</a>
+      <a class="btn btn-primary btn-sm" href="#">2023</a>
+      <a class="btn btn-ghost btn-sm" href="#">View Vintage</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Badges</p>
+    <div class="badge-row">
+      <span class="badge badge-burgundy">Gamay</span>
+      <span class="badge badge-outline">Pinot Noir</span>
+      <span class="badge badge-parchment">2023</span>
+      <span class="badge badge-bottle">Burgundy AOC</span>
+      <span class="badge badge-burgundy">En Stock</span>
+      <span class="badge badge-outline">Organic</span>
+      <span class="badge badge-parchment">12.5% vol</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Cards</p>
+    <div class="card-row">
+      <div class="card">
+        <span class="card-label">Coteaux Bourguignons — 2023</span>
+        <h3 class="card-title">P.A. Larsen Rouge</h3>
+        <p class="card-body">Dark cherry and violet on the nose, with a silky palate and long mineral finish. Serve at 16°C.</p>
+      </div>
+      <div class="card card-dark">
+        <span class="card-label">Cave Selection</span>
+        <h3 class="card-title">Vieilles Vignes</h3>
+        <p class="card-body">From 60-year-old ungrafted vines on granite soils. Concentrated and structured.</p>
+      </div>
+      <div class="card card-wine">
+        <span class="card-label">En Primeur</span>
+        <h3 class="card-title">Réservation 2024</h3>
+        <p class="card-body">Secure your allocation from the forthcoming harvest before general release.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Form Fields</p>
+    <div class="input-row">
+      <div class="field"><label>Full Name</label><input type="text" placeholder="Jean-Pierre Moreau"></div>
+      <div class="field"><label>Email Address</label><input type="email" placeholder="jp@domaine.fr"></div>
+      <div class="field"><label>Vintage</label><select><option>2023</option><option>2022</option><option>2021</option><option>2020</option></select></div>
+      <div class="field"><label>Tasting Notes</label><textarea placeholder="Describe the wine…"></textarea></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="section">
+    <p class="section-label">Ornamental Dividers</p>
+    <hr class="rule">
+    <div class="divider-ornament"><span>✦</span></div>
+    <div class="rule-double"></div>
+    <div class="divider-ornament"><span>◆</span></div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Spacing Scale</p>
+    <div class="space-scale">
+      <div class="space-row"><span class="space-meta">space-1 — 4px</span><div class="space-bar" style="width:4px"></div></div>
+      <div class="space-row"><span class="space-meta">space-2 — 8px</span><div class="space-bar" style="width:8px"></div></div>
+      <div class="space-row"><span class="space-meta">space-3 — 12px</span><div class="space-bar" style="width:12px"></div></div>
+      <div class="space-row"><span class="space-meta">space-4 — 16px</span><div class="space-bar" style="width:16px"></div></div>
+      <div class="space-row"><span class="space-meta">space-6 — 24px</span><div class="space-bar" style="width:24px"></div></div>
+      <div class="space-row"><span class="space-meta">space-8 — 32px</span><div class="space-bar" style="width:32px"></div></div>
+      <div class="space-row"><span class="space-meta">space-12 — 48px</span><div class="space-bar" style="width:48px"></div></div>
+      <div class="space-row"><span class="space-meta">space-16 — 64px</span><div class="space-bar" style="width:64px"></div></div>
+      <div class="space-row"><span class="space-meta">space-24 — 96px</span><div class="space-bar" style="width:96px"></div></div>
+    </div>
+  </section>
+
+  <div class="divider-ornament"><span>✦</span></div>
+
+  <section class="section" style="display:flex;justify-content:center;padding:var(--space-8) 0">
+    <div class="label-mockup">
+      <span class="lm-seal">Kristiania</span>
+      <span class="lm-producer">P.A. Larsen</span>
+      <span class="lm-appellation">Coteaux<br>Bourguignons</span>
+      <div class="lm-meta"><span>2023</span><span>Est. 1886</span></div>
+    </div>
+  </section>
+
+  <hr class="rule" style="margin-top:var(--space-16)">
+  <p class="t-fine" style="text-align:center;padding:var(--space-8) 0">P.A. Larsen Design System — Kristiania — Coteaux Bourguignons</p>
+
+</div>
+</body>
+</html>
